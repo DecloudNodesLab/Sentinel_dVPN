@@ -100,6 +100,6 @@ Here's what it looks like:
 **Deployment takes about 2 minutes.** Then the dVPN node will start working.<br/> <br/>
 Example of correct working logs:<br/>
 ![image](https://user-images.githubusercontent.com/23629420/221644766-0b182d4b-813e-41ef-ab31-22cd55059583.png)<br/>
-Also, if you open your sentinel address in [Explorer](https://www.mintscan.io/sentinel), you can see that there are transactions to update the status of your dVPN node.
+Also, if you open your sentinel address in [Explorer](https://www.mintscan.io/sentinel), you can see that there are transactions to update the status of your dVPN node.<br/>
 This completes the installation!<br/> <br/>
 Thank you for using **Akash Network**!
