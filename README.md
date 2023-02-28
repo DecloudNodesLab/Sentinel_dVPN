@@ -90,7 +90,7 @@ It's time to ask for current offerings in the computing power market. We press `
   
 <br/>
   
-As you can see, there were **3 providers** available in total, ready to provide computing power **with the static IP function**. I chose the cheapest one and continued fanning out.<br/>
+As you can see, there were **3 providers** available in total, ready to provide computing power **with the static IP function**. I chose the cheapest one and continued deploy.<br/>
 In the logs, we can see the **IPv4** address assigned to us. It also appears on the `LEASES` tab of our deployment.
 All we have to do is copy it, paste it into our manifest (deploy.yml) on the `UPDATE` page and update the deployment. <br/>
 Here's what it looks like:
