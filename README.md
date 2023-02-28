@@ -53,7 +53,7 @@ ___
 ## Preparation
 
 > To deploy a node, in this tutorial, I will use the [Cloudmos WEB interface](https://deploy.cloudmos.io/).
-How to work with it is [described in this document](https://github.com/DecloudNodesLab/Guides/blob/main/Russian/Cloudmos.md).
+How to work with it is [described in this document](https://github.com/DecloudNodesLab/Guides/blob/main/English/Cloudmos.md).
 1. Create a separate account in `Keplr` for the dVPN node.
 2. Encrypt the mnemonic phrase of the new account using `BASE64`, this can be done using the application [Notepad++](https://notepad-plus-plus.org/downloads/) (*Plugins-MIME Tools-Base64 Encode* ) or any **secure** online Base64 encoder.
 3. Top up your created dVPN account with at least `150dvpn` (~$0.10) to pay for gas. You can buy dvpn on exchanges like `OSMOSIS` or `KUCOIN`.
