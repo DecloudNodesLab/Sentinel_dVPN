@@ -19,11 +19,11 @@ ___
 
 Our news channels and technical support:
 
-| [Discord Akash](https://discord.akash.network/) | [Telegram Akash EN](https://t.me/AkashNW) |  [Twitter Akash](https://twitter.com/akashnet_)
+| [Discord Akash](https://discord.akash.network/) | [Telegram Akash](https://t.me/AkashNW) |  [Twitter Akash](https://twitter.com/akashnet_)
 |:--:|:--:|:--:|
   
   
-| [Discord Sentinel](https://discord.gg/HPW52yQuQJ) | [Telegram Sentinel](https://t.me/SentinelNodeNetwork) | [Twitter Sentinel](https://twitter.com/Sentinel_co)
+| [Discord Sentinel](https://discord.gg/HPW52yQuQJ) | [Telegram Sentinel dVPN](https://t.me/SentinelNodeNetwork) | [Twitter Sentinel](https://twitter.com/Sentinel_co)
 |:--:|:--:|:--:|
 
 | [Инструкция на русском](/README_RU.md) |
