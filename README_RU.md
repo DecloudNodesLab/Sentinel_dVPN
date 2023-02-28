@@ -26,7 +26,7 @@ ___
 | [Discord Sentinel](https://discord.gg/HPW52yQuQJ) | [Telegram Sentinel](https://t.me/SentinelNodeNetwork) | [Twitter Sentinel](https://twitter.com/Sentinel_co)
 |:--:|:--:|:--:|
 
-| [English guide](/English/Cloudmos.md) | 
+| [English guide](/README.md) | 
 |:--:|  
 </div>
 
