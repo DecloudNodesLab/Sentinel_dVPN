@@ -20,9 +20,9 @@
    * `INTERVAL_UPDATE_SESSIONS` - Time interval between each update_sessions transaction (default value: `1h55m0s` ).
    * `INTERVAL_UPDATE_STATUS` - Time interval between each set_status transaction (default value: `55m0s` ).
    * `REMOTE_PORT` - Port for connecting sentinelcli clients (default value: `8585` ).
-   * `MONIKER` - Node name (default value: `null` ).
-  
-   * `PROVIDER` - Address of the provider under which the node can work (default value: `null` ).
+   * `MONIKER` - Node name (default value: `null` ).  
+   * `GIGABYTE_PRICES` - Price per 1 gygabyte traffic.
+   * `HOURLY_PRICES`  - Price per 1 hour traffic.
    * `IPV4_ADDRESS` - IPv4 address to replace the public IPv4 address with one issued by the ISP (default value: `null` ).
    * `TYPE` - Node type (default value: `v2ray` ).
   
@@ -51,8 +51,8 @@
   * `INTERVAL_UPDATE_STATUS` - Интервал времени между каждой транзакцией set_status ( значение по-умолчанию: `55m0s` ).
   * `REMOTE_PORT` - Порт для подключения клиентов sentinelcli ( значение по-умолчанию: `8585` ).
   * `MONIKER` - Имя узла ( значение по-умолчанию: `null` ).
-  * `PRICE` - Цена за гигабайт для взимания платы за предоставленную пропускную способность ( значение по-умолчанию: `105000ibc/31FEE1A2A9F9C01113F90BD0BBCCE8FD6BBB8585FAF109A2101827DD1D5B95B8,6000ibc/A8C2D23A1E6F95DA4E48BA349667E322BD7A6C996D8A4AAE8BA72E190F3D1477,800000ibc/B1C0DDB14F25279A2026BC8794E12B259F8BDA546A3C5132CCAEE4431CE36783,80000ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518,11000000udvpn` ).
-  * `PROVIDER` - Адрес провайдера, под которым нода может работать ( значение по-умолчанию: `null` ).
+  * `GIGABYTE_PRICES` - Цена за 1 гигабайт пропущенного траффика.
+  * `HOURLY_PRICES`  - Цена за 1 час подключения.
   * `IPV4_ADDRESS` - IPv4-адрес для замены общедоступного IPv4-адреса на выданный провайдером ( значение по-умолчанию: `null` ).
   * `TYPE` - Тип узла ( значение по-умолчанию: `v2ray` ).
   
