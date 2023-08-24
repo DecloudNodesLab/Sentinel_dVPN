@@ -1,8 +1,27 @@
 #!/bin/bash
-if [[ -z $LISTEN_PORT ]] || [[ -z $REMOTE_PORT ]] ; then echo CHECK YOUR LISTEN_PORT AND REMOTE_PORT IN DEPLOY.YML ! ; echo For example: "LISTEN_PORT=3333" "REMOTE_PORT=8585" ; sleep infinity ; fi
-if [[ -z $IPV4_ADDRESS ]] ; then echo CHECK YOUR IPV4 ADDRESS IN DEPLOY.YML ! ; echo For example: "IPV4_ADDRESS=XXX.XXX.XXX.XXX" ; sleep infinity ;fi
+CONFIG_PATH="/root/.sentinelnode/config.toml"
+V2RAY_CONFIG_PATH="/root/.sentinelnode/v2ray.toml"
+
+# Function to check if a variable is set and print an error message if it's not.
+check_var() {
+    local var_name="$1"
+    local error_message="$2"
+    local example="$3"
+    if [[ -z ${!var_name} ]]; then
+        echo "$error_message"
+        echo "For example: $example"
+        sleep infinity
+    fi
+}
+check_var "LISTEN_PORT" "CHECK YOUR LISTEN_PORT AND REMOTE_PORT IN DEPLOY.YML !" "LISTEN_PORT=3333 REMOTE_PORT=8585"
+check_var "IPV4_ADDRESS" "CHECK YOUR IPV4 ADDRESS IN DEPLOY.YML !" "IPV4_ADDRESS=XXX.XXX.XXX.XXX"
+
+# Initialize configurations.
 sentinelnode config init && sentinelnode v2ray config init
+
+# Generate TLS certificates.
 (echo ;echo ;echo ;echo ;echo ;echo ;echo )| openssl req -new -newkey ec -pkeyopt ec_paramgen_curve:prime256v1 -x509 -sha256 -days 365 -nodes -out ${HOME}/tls.crt -keyout ${HOME}/tls.key
+
 if [[ -n $GAS_ADJUSTMENT ]] ; then sed -i.bak -e "s|^gas_adjustment *=.*|gas_adjustment = $GAS_ADJUSTMENT|;" /root/.sentinelnode/config.toml ; fi
 if [[ -n $GAS ]] ; then sed -i.bak -e "s|^gas *=.*|gas = $GAS|;" /root/.sentinelnode/config.toml ; fi
 if [[ -n $GAS_PRICES ]] ; then sed -i.bak -e "s|^gas_prices *=.*|gas_prices = \"$GAS_PRICES\"|;" /root/.sentinelnode/config.toml ; fi
