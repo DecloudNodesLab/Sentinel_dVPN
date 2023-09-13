@@ -37,7 +37,7 @@ profiles:
         memory:
           size: 1Gi
         storage:
-          size: 10Gi         
+          size: 3Gi         
   placement:
     akash: 
       pricing:
