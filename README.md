@@ -61,7 +61,7 @@ How to work with it is [described in this document](https://github.com/DecloudNo
 ## Node deployment
 Open [WEB interface](https://deploy.cloudmos.io/) `Cloudmos`.
 
-Make sure you have **more than 6 AKT** on your balance and **certificate present** (if not, refer to [Cloudmos instructions](https://github.com/DecloudNodesLab/Guides/blob/main/English/Cloudmos.md#create-certificate)). Next, click the `DEPLOY` button, select the empty `Empty` template and copy the contents of [deploy.yml](https://raw.githubusercontent.com/DecloudNodesLab/Sentinel_dVPN/main/deploy.yml) there .
+Make sure you have **more than 0.5 AKT** on your balance and **certificate present** (if not, refer to [Cloudmos instructions](https://github.com/DecloudNodesLab/Guides/blob/main/English/Cloudmos.md#create-certificate)). Next, click the `DEPLOY` button, select the empty `Empty` template and copy the contents of [deploy.yml](https://raw.githubusercontent.com/DecloudNodesLab/Sentinel_dVPN/main/deploy.yml) there .
 ___
 
 <p align="center"><img src="https://user-images.githubusercontent.com/23629420/221607947-cdc2b2e6-cc96-4709-9278-e15369bb62bf.gif" width=70% </p>
