@@ -40,7 +40,7 @@ profiles:
         cpu:
           units: 1
         memory:
-          size: 1Gi
+          size: 2Gi
         storage:
           size: 10Gi         
   placement:
