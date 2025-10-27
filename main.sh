@@ -1,6 +1,6 @@
 #!/bin/bash
-CONFIG_PATH="/root/.sentinelnode/config.toml"
-V2RAY_CONFIG_PATH="/root/.sentinelnode/v2ray.toml"
+CONFIG_PATH="/root/.sentinel-dvpnx/config.toml"
+V2RAY_CONFIG_PATH="/root/.sentinel-dvpnx/v2ray.toml"
 # Function to check if a variable is set and print an error message if it's not.
 check_var() {
     local var_name="$1"
@@ -67,7 +67,7 @@ sed -i.bak -e "s|^listen_port *=.*|listen_port = $LISTEN_PORT|;" "$V2RAY_CONFIG_
 [[ -n $BACKEND ]] || sed -i.bak -e "s/^backend *=.*/backend = \"test\"/;" "$CONFIG_PATH"
 [[ -n $TYPE ]] || sed -i.bak -e "s/^type *=.*/type = \"v2ray\"/;" "$CONFIG_PATH"
 
-(echo `echo $MNEMONIC_BASE64 | base64 -d`)|sentinelnode keys add --recover
-mv ${HOME}/tls.crt ${HOME}/.sentinelnode/tls.crt && mv ${HOME}/tls.key ${HOME}/.sentinelnode/tls.key
+(echo `echo $MNEMONIC_BASE64 | base64 -d`)|sentinel-dvpnx keys add --recover
+mv ${HOME}/tls.crt ${HOME}/.sentinel-dvpnx/tls.crt && mv ${HOME}/tls.key ${HOME}/.sentinel-dvpnx/tls.key
 PATH=$PATH:/root/v2ray
-sentinelnode start
+sentinel-dvpnx start
