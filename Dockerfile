@@ -38,7 +38,6 @@ WORKDIR /tmp
 RUN git clone https://github.com/sentinel-official/sentinel-dvpnx && \
     cd sentinel-dvpnx && \
     git checkout v8.0.0
-RUN make
 RUN make install
     
 # Copy the main script and set CMD
