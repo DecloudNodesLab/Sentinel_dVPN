@@ -36,7 +36,7 @@ RUN git clone https://github.com/NLnetLabs/unbound.git && \
 # Install dvpn-node
 WORKDIR /tmp
 RUN git clone https://github.com/sentinel-official/sentinel-dvpnx && \
-    cd dvpn-node && \
+    cd sentinel-dvpnx && \
     git checkout v8.0.0
 RUN make
 RUN make install
