@@ -37,9 +37,9 @@ RUN git clone https://github.com/NLnetLabs/unbound.git && \
 WORKDIR /tmp
 RUN git clone https://github.com/sentinel-official/sentinel-dvpnx && \
     cd dvpn-node && \
-    git checkout v8.0.0 && \
-    make && \
-    make install
+    git checkout v8.0.0
+RUN make
+RUN make install
     
 # Copy the main script and set CMD
 COPY ./main.sh /
