@@ -22,16 +22,35 @@ permissions:
 
 env:
   REGISTRY: ghcr.io
-  # по умолчанию owner/repo в нижнем регистре
-  IMAGE_NAME: ${{ github.event.inputs.image_name != '' && github.event.inputs.image_name || toLower(github.repository) }}
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
+    # Пробросим секреты в env, чтобы использовать их в if через env.*
+    env:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Compute image name (lowercase) and extra tag
+        id: prep
+        run: |
+          # 1) Имя образа: input.image_name или owner/repo; в lowercase через bash-параметрическое расширение
+          RAW_NAME="${{ github.event.inputs.image_name }}"
+          if [ -z "$RAW_NAME" ]; then
+            RAW_NAME="${GITHUB_REPOSITORY}"
+          fi
+          IMAGE_NAME="${RAW_NAME,,}"
+
+          # 2) Дополнительный тег из ручного запуска (может быть пустым)
+          EXTRA_TAG="${{ github.event.inputs.tag }}"
+
+          echo "IMAGE_NAME=$IMAGE_NAME" >> $GITHUB_ENV
+          echo "EXTRA_TAG=$EXTRA_TAG"   >> $GITHUB_ENV
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -46,13 +65,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # (опционально) Логин в Docker Hub — если заданы секреты
+      # (опционально) Логин в Docker Hub — только если заданы секреты
       - name: Login to Docker Hub (optional)
-        if: ${{ secrets.DOCKERHUB_USERNAME != '' && secrets.DOCKERHUB_TOKEN != '' }}
+        if: ${{ env.DOCKERHUB_USERNAME && env.DOCKERHUB_TOKEN }}
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: ${{ env.DOCKERHUB_USERNAME }}
+          password: ${{ env.DOCKERHUB_TOKEN }}
 
       - name: Docker metadata
         id: meta
@@ -60,7 +79,8 @@ jobs:
         with:
           images: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-            ${{ secrets.DOCKERHUB_USERNAME != '' && secrets.DOCKERHUB_TOKEN != '' && format('{0}/{1}', secrets.DOCKERHUB_USERNAME, github.event.repository.name) || '' }}
+            # в Docker Hub пушим только если логин прошёл (секреты заданы)
+            ${{ env.DOCKERHUB_USERNAME && format('{0}/{1}', env.DOCKERHUB_USERNAME, github.event.repository.name) || '' }}
           tags: |
             # latest — только для main
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
@@ -69,7 +89,7 @@ jobs:
             # теги релизов вида v1.2.3
             type=ref,event=tag
             # дополнительный тег из ручного запуска
-            type=raw,value=${{ github.event.inputs.tag }},enable=${{ github.event_name == 'workflow_dispatch' && github.event.inputs.tag != '' }}
+            type=raw,value=${{ env.EXTRA_TAG }},enable=${{ github.event_name == 'workflow_dispatch' && env.EXTRA_TAG != '' }}
 
       - name: Build and push
         uses: docker/build-push-action@v5
