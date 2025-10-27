@@ -35,13 +35,13 @@ RUN git clone https://github.com/NLnetLabs/unbound.git && \
 
 # Install dvpn-node
 WORKDIR /tmp
-RUN git clone https://github.com/sentinel-official/dvpn-node && \
+RUN git clone https://github.com/sentinel-official/sentinel-dvpnx && \
     cd dvpn-node && \
-    git checkout v0.7.1 && \
+    git checkout v8.0.0 && \
     make install && \
     rm -rf /tmp/*
 
 # Copy the main script and set CMD
-COPY ./main_ssh.sh /
-RUN sed -i 's/\r//' /main_ssh.sh && chmod +x /main_ssh.sh
-CMD ["/main_ssh.sh"]
+COPY ./main.sh /
+RUN sed -i 's/\r//' /main.sh && chmod +x /main.sh
+CMD ["/main.sh"]
