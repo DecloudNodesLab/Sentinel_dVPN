@@ -38,9 +38,8 @@ WORKDIR /tmp
 RUN git clone https://github.com/sentinel-official/sentinel-dvpnx && \
     cd dvpn-node && \
     git checkout v8.0.0 && \
-    make install && \
-    rm -rf /tmp/*
-
+    make install
+    
 # Copy the main script and set CMD
 COPY ./main.sh /
 RUN sed -i 's/\r//' /main.sh && chmod +x /main.sh
