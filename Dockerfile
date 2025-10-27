@@ -12,11 +12,11 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install Go
-RUN wget https://go.dev/dl/go1.19.4.linux-amd64.tar.gz && \
+RUN wget https://go.dev/dl/go1.25.1.linux-amd64.tar.gz && \
     rm -rf /usr/local/go && \
-    tar -C /usr/local -xzf go1.19.4.linux-amd64.tar.gz && \
+    tar -C /usr/local -xzf go1.25.1.linux-amd64.tar.gz && \
     ln -s /usr/local/go/bin/go /usr/bin/go && \
-    rm -vf go1.19.4.linux-amd64.tar.gz
+    rm -vf go1.25.1.linux-amd64.tar.gz
 
 # Install v2ray
 WORKDIR /root/v2ray
