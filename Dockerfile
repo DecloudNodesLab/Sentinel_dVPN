@@ -37,7 +37,7 @@ RUN git clone https://github.com/NLnetLabs/unbound.git && \
 WORKDIR /tmp
 RUN git clone https://github.com/sentinel-official/sentinel-dvpnx && \
     cd sentinel-dvpnx && \
-    git checkout v8.0.0&& \
+    git checkout v8.2.0 && \
     make && \
     make install && \
     mv /root/go/bin/sentinel-dvpnx /usr/bin/sentinel-dvpnx
