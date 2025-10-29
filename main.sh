@@ -67,7 +67,7 @@ sed -i.bak -e "s|^listen_port *=.*|listen_port = $LISTEN_PORT|;" "$V2RAY_CONFIG_
 [[ -n $BACKEND ]] || sed -i.bak -e "s/^backend *=.*/backend = \"test\"/;" "$CONFIG_PATH"
 [[ -n $TYPE ]] || sed -i.bak -e "s/^type *=.*/type = \"v2ray\"/;" "$CONFIG_PATH"
 mnemonic="$(printf '%s' "$MNEMONIC_BASE64" | base64 -d -w0)"
-printf '%s\n\n' "$mnemonic" | sentinel-dvpnx keys add key-1 --keyring.backend test
+printf '%s\n\n' "$mnemonic" | sentinel-dvpnx keys add main --keyring.backend test
 mv ${HOME}/tls.crt ${HOME}/.sentinel-dvpnx/tls.crt && mv ${HOME}/tls.key ${HOME}/.sentinel-dvpnx/tls.key
 PATH=$PATH:/root/v2ray
 sentinel-dvpnx start
