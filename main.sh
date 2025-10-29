@@ -66,8 +66,8 @@ sed -i.bak -e "s|^listen_port *=.*|listen_port = $LISTEN_PORT|;" "$V2RAY_CONFIG_
 [[ -z $HANDSHAKE ]] && HANDSHAKE=false && update_config "HANDSHAKE" "enable" "$CONFIG_PATH"
 [[ -n $BACKEND ]] || sed -i.bak -e "s/^backend *=.*/backend = \"test\"/;" "$CONFIG_PATH"
 [[ -n $TYPE ]] || sed -i.bak -e "s/^type *=.*/type = \"v2ray\"/;" "$CONFIG_PATH"
-
-(echo `echo $MNEMONIC_BASE64 | base64 -d`)|sentinel-dvpnx keys add wallet
+mnemonic="$(printf '%s' "$MNEMONIC_BASE64" | base64 -d -w0)"
+printf '%s\n\n' "$mnemonic" | sentinel-dvpnx keys add wallet --keyring.backend test
 mv ${HOME}/tls.crt ${HOME}/.sentinel-dvpnx/tls.crt && mv ${HOME}/tls.key ${HOME}/.sentinel-dvpnx/tls.key
 PATH=$PATH:/root/v2ray
 sentinel-dvpnx start
