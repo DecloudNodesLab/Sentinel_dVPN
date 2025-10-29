@@ -26,7 +26,7 @@ check_var "REMOTE_PORT" "CHECK YOUR FORWARDING REMOTE_PORT IN DEPLOY.YML !" "REM
 check_var "LISTEN_PORT" "CHECK YOUR FORWARDING LISTEN_PORT IN DEPLOY.YML !" "LISTEN_PORT=3333"
 check_var "MNEMONIC_BASE64" "CHECK YOUR MNEMONIC_BASE64 , BASE64 ENCODE, IN DEPLOY.YML!" "MNEMONIC_BASE64=YXJt5BBjb21mb3YlZ2xlb3IgCc2G9HJpY2ggZn3QgaWlkZSBwb25uZXIgd2VhciBmbGF2b3IjYW5keSgzdJlcXVlbnQ"
 
-sentinel-dvpnx config init && sentinelnode v2ray config init
+sentinel-dvpnx init
 
 (echo ;echo ;echo ;echo ;echo ;echo ;echo )| openssl req -new -newkey ec -pkeyopt ec_paramgen_curve:prime256v1 -x509 -sha256 -days 365 -nodes -out ${HOME}/tls.crt -keyout ${HOME}/tls.key
 API_ADDRESS="0.0.0.0:$REMOTE_PORT"
@@ -67,7 +67,7 @@ sed -i.bak -e "s|^listen_port *=.*|listen_port = $LISTEN_PORT|;" "$V2RAY_CONFIG_
 [[ -n $BACKEND ]] || sed -i.bak -e "s/^backend *=.*/backend = \"test\"/;" "$CONFIG_PATH"
 [[ -n $TYPE ]] || sed -i.bak -e "s/^type *=.*/type = \"v2ray\"/;" "$CONFIG_PATH"
 
-(echo `echo $MNEMONIC_BASE64 | base64 -d`)|sentinel-dvpnx keys add --recover
+(echo `echo $MNEMONIC_BASE64 | base64 -d`)|sentinel-dvpnx keys add
 mv ${HOME}/tls.crt ${HOME}/.sentinel-dvpnx/tls.crt && mv ${HOME}/tls.key ${HOME}/.sentinel-dvpnx/tls.key
 PATH=$PATH:/root/v2ray
 sentinel-dvpnx start
