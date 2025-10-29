@@ -40,7 +40,7 @@ RUN git clone https://github.com/sentinel-official/sentinel-dvpnx && \
     git checkout v8.0.0&& \
     make && \
     make install && \
-    mv /root/gi/bin/sentinel-dvpnx /usr/bin/sentinel-dvpnx
+    mv /root/go/bin/sentinel-dvpnx /usr/bin/sentinel-dvpnx
     
 # Copy the main script and set CMD
 COPY ./main.sh /
