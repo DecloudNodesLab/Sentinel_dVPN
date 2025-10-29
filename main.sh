@@ -1,6 +1,6 @@
 #!/bin/bash
 CONFIG_PATH="/root/.sentinel-dvpnx/config.toml"
-V2RAY_CONFIG_PATH="/root/.sentinel-dvpnx/v2ray.toml"
+V2RAY_CONFIG_PATH="/root/.sentinel-dvpnx/v2ray/config.toml"
 # Function to check if a variable is set and print an error message if it's not.
 check_var() {
     local var_name="$1"
@@ -26,7 +26,7 @@ check_var "REMOTE_PORT" "CHECK YOUR FORWARDING REMOTE_PORT IN DEPLOY.YML !" "REM
 check_var "LISTEN_PORT" "CHECK YOUR FORWARDING LISTEN_PORT IN DEPLOY.YML !" "LISTEN_PORT=3333"
 check_var "MNEMONIC_BASE64" "CHECK YOUR MNEMONIC_BASE64 , BASE64 ENCODE, IN DEPLOY.YML!" "MNEMONIC_BASE64=YXJt5BBjb21mb3YlZ2xlb3IgCc2G9HJpY2ggZn3QgaWlkZSBwb25uZXIgd2VhciBmbGF2b3IjYW5keSgzdJlcXVlbnQ"
 
-sentinel-dvpnx init --node.service-type "v2ray"
+sentinel-dvpnx init --node.service-type "v2ray" --node.remote-addrs $IPV4_ADDRESS
 
 (echo ;echo ;echo ;echo ;echo ;echo ;echo )| openssl req -new -newkey ec -pkeyopt ec_paramgen_curve:prime256v1 -x509 -sha256 -days 365 -nodes -out ${HOME}/tls.crt -keyout ${HOME}/tls.key
 API_ADDRESS="0.0.0.0:$REMOTE_PORT"
